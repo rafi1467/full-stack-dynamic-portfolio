@@ -413,7 +413,7 @@
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="container nav-container">
-            <a href="{{ route('home') }}" class="logo">My Portfolio</a>
+            <a href="{{ route('home') }}" class="logo">Rafi</a>
             <ul class="nav-links">
                 <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
                 <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a></li>
