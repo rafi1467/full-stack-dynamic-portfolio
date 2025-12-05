@@ -15,12 +15,16 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f5f5;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
         
         /* Navigation Styles */
@@ -71,6 +75,12 @@
             background-color: #ebf5fb;
         }
         
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+        
         /* Portfolio Table Styles */
         .portfolio-table {
             width: 100%;
@@ -110,11 +120,13 @@
             border-left: 4px solid #3498db;
         }
         
+        /* Content Grid for Projects, Skills, etc. */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 1rem;
+            padding-bottom: 2rem; /* Added padding at bottom */
         }
         
         .content-card {
@@ -123,6 +135,9 @@
             border-radius: 6px;
             padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 250px; /* Fixed height for cards */
+            display: flex;
+            flex-direction: column;
         }
         
         .content-card:hover {
@@ -134,17 +149,20 @@
             font-size: 1.2rem;
             color: #2c3e50;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
         
         .card-subtitle {
             color: #7f8c8d;
             font-size: 0.9rem;
             margin-bottom: 1rem;
+            font-style: italic;
         }
         
         .card-description {
             color: #555;
             line-height: 1.6;
+            flex: 1; /* Makes description take available space */
         }
         
         /* Footer Styles */
@@ -152,8 +170,8 @@
             background-color: #2c3e50;
             color: white;
             padding: 2rem 0;
-            margin-top: 3rem;
-            text-align: center;
+            margin-top: auto; /* Pushes footer to bottom */
+            width: 100%;
         }
         
         .footer-content {
@@ -177,6 +195,16 @@
         
         .footer-links a:hover {
             color: white;
+        }
+        
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
         }
         
         /* Responsive Design */
@@ -205,6 +233,14 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
             }
         }
         
@@ -317,6 +353,59 @@
         .btn-primary:hover {
             background-color: #2980b9;
         }
+        
+        /* Button Container for Project Links */
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto; /* Pushes buttons to bottom of card */
+            padding-top: 1rem;
+        }
+        
+        .btn-github {
+            background-color: #2c3e50;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-github:hover {
+            background-color: #1a252f;
+        }
+        
+        .btn-demo {
+            background-color: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-demo:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+            background-color: white;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #3498db;
+        }
     </style>
     @yield('styles')
 </head>
@@ -355,36 +444,33 @@
     </footer>
 
     <script>
-    // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
-        // Skill bar animation
-        const skillBars = document.querySelectorAll('.skill-level');
-        skillBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 300);
-        });
-        
-        // Form validation
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Message sent! (This is a demo)');
-                this.reset();
-            });
+        // Function to adjust main content minimum height
+        function adjustMainHeight() {
+            const main = document.querySelector('main');
+            const nav = document.querySelector('.main-nav');
+            const footer = document.querySelector('footer');
+            
+            if (main && nav && footer) {
+                const windowHeight = window.innerHeight;
+                const navHeight = nav.offsetHeight;
+                const footerHeight = footer.offsetHeight;
+                const mainHeight = main.offsetHeight;
+                
+                // If main content is too short, set min-height
+                const minHeight = windowHeight - navHeight - footerHeight - 100;
+                if (mainHeight < minHeight) {
+                    main.style.minHeight = minHeight + 'px';
+                }
+            }
         }
         
-        // Add active class to current page in navigation
-        const currentPath = window.location.pathname;
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPath) {
-                link.classList.add('active');
-            }
-        });
+        // Adjust on load and resize
+        adjustMainHeight();
+        window.addEventListener('resize', adjustMainHeight);
+        
+        // Also adjust after images load
+        window.addEventListener('load', adjustMainHeight);
     });
 </script>
 
