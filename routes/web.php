@@ -1,37 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectInfoController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ContactController;
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+// Home Page
+Route::get('/', [ProjectInfoController::class, 'home'])->name('home');
 
-Route::get('/skills', function () {
-    return view('pages.skills');
-});
+// Skills Page
+Route::get('/skills', [SkillController::class, 'index'])->name('skills');
 
-Route::get('/projects', function () {
-    return view('pages.projects');
-});
+// Projects Pages
+Route::get('/projects', [ProjectInfoController::class, 'index'])->name('projects');
+Route::get('/projects/{project}', [ProjectInfoController::class, 'show'])->name('projects.show');
 
-Route::get('/academic', function () {
-    return view('pages.academic');
-});
+// Academic Page
+Route::get('/academic', [ProjectInfoController::class, 'academic'])->name('academic');
 
-Route::get('/achievements', function () {
-    return view('pages.achievements');
-});
+// Achievements Page
+Route::get('/achievements', [ProjectInfoController::class, 'achievements'])->name('achievements');
 
-Route::get('/about', function () {
-    return view('pages.about');
-});
+// About Page
+Route::get('/about', [ProjectInfoController::class, 'about'])->name('about');
 
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
-
-Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
-Route::get('/skills/create', [SkillController::class, 'create'])->name('skills.create');
-Route::post('/skills/store', [SkillController::class, 'store'])->name('skills.store');
-Route::delete('/skills/delete/{id}', [SkillController::class, 'destroy'])->name('skills.destroy');
+// Contact Pages
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

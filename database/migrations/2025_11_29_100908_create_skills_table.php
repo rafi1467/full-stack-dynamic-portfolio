@@ -6,22 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->string('name');          // Skill name (e.g. HTML, CSS)
-            $table->integer('percentage');   // Skill percentage (0–100)
+            $table->string('name');
+            $table->integer('proficiency'); // 1-100
+            $table->string('category'); // frontend, backend, tools, etc.
+            $table->string('icon')->nullable();
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('skills');
