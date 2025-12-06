@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <div style="font-weight: 600; color: #2c3e50;">Email</div>
-                        <div style="color: #666;">your.email@example.com</div>
+                        <div style="color: #666;">rafi22205101467@diu.edu.bd</div>
                     </div>
                 </div>
                 
@@ -26,7 +26,7 @@
                     </div>
                     <div>
                         <div style="font-weight: 600; color: #2c3e50;">Phone</div>
-                        <div style="color: #666;">+123 456 7890</div>
+                        <div style="color: #666;">+8801724886212</div>
                     </div>
                 </div>
                 
@@ -36,7 +36,7 @@
                     </div>
                     <div>
                         <div style="font-weight: 600; color: #2c3e50;">Location</div>
-                        <div style="color: #666;">City, Country</div>
+                        <div style="color: #666;">Dhaka, Bangladesh</div>
                     </div>
                 </div>
             </div>

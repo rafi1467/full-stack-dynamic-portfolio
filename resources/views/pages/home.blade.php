@@ -28,7 +28,7 @@
                         <div class="card-title">Project 1</div>
                         <div class="card-subtitle">Web Application</div>
                         <div class="card-description">
-                            A full-stack web application built with Laravel and React.
+                            A full-stack web application built with Laravel.
                         </div>
                     </div>
                     <div class="content-card">
@@ -60,15 +60,15 @@
                         <div style="margin-top: 1.5rem;">
                             <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                                 <span style="color: #3498db; margin-right: 0.5rem;">📧</span>
-                                <span>email@example.com</span>
+                                <span>rafi22205101467@diu.edu.bd</span>
                             </div>
                             <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                                 <span style="color: #3498db; margin-right: 0.5rem;">📱</span>
-                                <span>+123 456 7890</span>
+                                <span>+8801724886212</span>
                             </div>
                             <div style="display: flex; align-items: center;">
                                 <span style="color: #3498db; margin-right: 0.5rem;">📍</span>
-                                <span>City, Country</span>
+                                <span>Dhaka, Bangladesh</span>
                             </div>
                         </div>
                     </div>

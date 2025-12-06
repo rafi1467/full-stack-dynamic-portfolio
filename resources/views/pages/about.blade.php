@@ -23,7 +23,7 @@
         <div style="margin-top: 2rem;">
             <h3 style="color: #2c3e50; margin-bottom: 1rem;">My Journey</h3>
             <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                Started my journey in web development 5 years ago, and have been working on various projects
+                Started my journey in web development 1 year ago, and have been working on various projects
                 ranging from simple websites to complex web applications.
             </p>
             
